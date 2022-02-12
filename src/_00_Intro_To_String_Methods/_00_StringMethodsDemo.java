@@ -42,7 +42,7 @@ public class _00_StringMethodsDemo {
         // Removing whitespace from the beginning and end of a String
         String paddedStr = "    Welcome to Java     ";
         System.out.println("String with whitespace ..:" + paddedStr);
-        System.out.println("String without whitespace:" + paddedStr.trim());
+        System.out.println("String without whitespace: " + paddedStr.trim());
         
         // Finding the index of the first matching character
         int index = str.indexOf('o');
