@@ -1,6 +1,7 @@
 package _00_Intro_To_String_Methods;
 
 import java.util.Base64;
+import java.util.Iterator;
 
 /*
  * Visit the JavaDocs for the String class to view everything you can do with a String.
@@ -55,43 +56,86 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
-        String se1 = s1.trim();
+        String answer;
+        String holder;
+    	String se1 = s1.trim();
         String se2 = s2.trim();
         String se3 = s3.trim();
         int se11 = se1.length() - 1;
         int se22 = se2.length() - 1;
         int se33 = se3.length() - 1;
-        if (se1.charAt(se11)) {
-			
+        String ind1 = se1.substring(se11);
+        String ind2 = se2.substring(se22);
+        String ind3 = se3.substring(se33);
+        if (ind1.compareTo(ind2) < 0) {
+			answer = se1;
+			holder = ind1;
+		} else {
+			answer = se2;
+			holder = ind2;
 		}
-    	return null;
+        if (ind3.compareTo(holder) < 0) {
+			answer = se3;
+		}
+        
+    	return answer;
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+    	int sum = 0;
+    	for (int i = 0; i < s.length(); i++) {
+			if (Character.isDigit(s.charAt(i)) == true) {
+				String b = s.charAt(i) + "";
+				int a = Integer.parseInt(b);
+				sum += a;
+			}
+    	}
+        return sum;
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+        int numOccurances = 0;
+        int index = s.indexOf(substring);
+        while( index != -1 ) {
+            numOccurances++;
+            index = s.indexOf(substring, index + substring.length());
+        }
+        return numOccurances;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+        byte b = (byte)key;
+        byte[] a = new byte [s.length()];
+        for (int i = 0; i < s.length(); i++) {
+			a[i] += (byte) s.charAt(i);
+		}
+    	return Utilities.encrypt(a, b);
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+    	byte b = (byte)key;
+        return Utilities.decrypt(s, b);
     }
 
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+    	int a = substring.length();
+    	int num = 0;
+    	for (int i = a; i < s.length(); i++) {
+			if (s.charAt(i) == ' ' || i == s.length()-1) {
+				String sub = s.substring(i-a,i);
+				if (sub.equalsIgnoreCase(substring)) {
+					num++;
+				}
+			}
+		}
+        return num;
     }
 
     // Given String s, return the number of characters between the first
