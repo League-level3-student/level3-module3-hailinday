@@ -151,13 +151,11 @@ public class _01_StringMethods {
 			}
 		}
     	for (int i = s.length(); i > 0; i--) {
-    		System.out.println(s.substring(i-substring.length(),i));
     		if (s.substring(i-substring.length(),i).equals(substring)) {
     			end = i-substring.length();
     			break;
     		}
 		}
-    	System.out.println(end + " " + start);
     	int finals = end - start - substring.length();
         return finals;
     }
@@ -167,11 +165,16 @@ public class _01_StringMethods {
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
     	String trim = s.trim();
-    	String back = "";
-    	for (int i = s.length()-1; i > 0; i--) {
-			back += s.indexOf(i);
+    	String backward = "";
+    	String newtrim = trim.replaceAll("[?. ,:'+=;-]", "");
+    	for (int i = newtrim.length()-1; i >= 0; i--) {
+			backward += newtrim.charAt(i);
 		}
-        return true;
+    	System.out.println(newtrim + "|||| " + backward);
+    	if (backward.equalsIgnoreCase(newtrim)) {
+			return true;
+		}
+        return false;
     }
 }
 
