@@ -24,23 +24,24 @@ public class _02_PasswordChecker implements KeyListener {
     /*
      * 1. Check a minimum of 8 characters
      */
-    static final String regexCriteria1 = "";
+    static final String regexCriteria1 = ".{8,20}";
 
     /*
      * 2. Check there is at least 1 number, i.e. a digit 0-9
      */
-    static final String regexCriteria2 = "";
+    static final String regexCriteria2 = "[0-9]";
 
     /*
      * 3. Check there is at least 1 capital letter
      */
-    static final String regexCriteria3 = "";
+    static final String regexCriteria3 = "[A-Z]";
 
     /*
      * 4. Check there is at least 1 special character, where special
      * characters are one of the following, @#$%^&-+=()
      */
-    static final String regexCriteria4 = "";
+    static final String regexCriteria4 = "[@#$%^&-+=()]";
+    
     
     /*
      * *BONUS* Add more password criteria. Some suggestions are:
@@ -60,7 +61,7 @@ public class _02_PasswordChecker implements KeyListener {
     static final String CORRECT = " + ";
     static final boolean USE_FIND = true;
     static final boolean USE_MATCH = false;
-    static final String CRITERIA1 = "A minimum of 8 characters";
+    static final String CRITERIA1 = "A minimum of 8 characters, maximum of 20";
     static final String CRITERIA2 = "Must contain at least 1 number";
     static final String CRITERIA3 = "Must contain at least 1 capital letter";
     static final String CRITERIA4 = "Must contain at least 1 special character";
